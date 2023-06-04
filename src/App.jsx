@@ -1,5 +1,5 @@
 import Header from './components/Header'
-import Expenses from './components/Expenses/Expenses'
+import Expense from './components/Expenses/Expense'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />  
-      <Expenses />
+      <Expense />
       <Footer />
     </>
   )

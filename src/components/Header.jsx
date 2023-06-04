@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header>
+    <header style={{backgroundColor: "gray"}}>
       <h1>Track Spend</h1>
     </header>
   );
