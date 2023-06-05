@@ -8,9 +8,10 @@ const columns = [
   { field: 'id', headerName: 'ID', width: 100 },
   { field: 'amount', headerName: 'Amount', width: 130 },
   { field: 'category', headerName: 'Category', width: 130 },
+  { field: 'date', headerName: 'Date', width: 130},
 ];
 
-export default function ExpenseList({ expense }) {
+export default function ExpenseList({ expense, onSelectionChange }) {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
@@ -23,6 +24,18 @@ export default function ExpenseList({ expense }) {
         }}
         pageSizeOptions={[5, 10]}
         checkboxSelection
+        onRowSelectionModelChange={(newSelection) => {
+          onSelectionChange(newSelection);
+        }}
+        getRowClassName={(params) =>
+          params.row.disabled ? "disabled" : ""
+        }
+        sx={{
+          '& .disabled': {
+            backgroundColor: '#f5f5f5',
+            color: '#999',
+          },
+        }}
       />
     </div>
   );
@@ -33,5 +46,7 @@ ExpenseList.propTypes = {
     id: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
   })).isRequired,
+  onSelectionChange: PropTypes.func.isRequired,
 };
